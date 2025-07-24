@@ -1,0 +1,493 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Header */
+#menu__toggle {
+  opacity: 0;
+}
+
+#menu__toggle:checked ~ .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked ~ .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  visibility: visible;
+  right: 0; /* ✅ Changed from left: 0 */
+}
+
+.menu__btn {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 9%;
+  right: 20px; /* ✅ Changed from left: 20px to right: 20px */
+
+  width: 26px;
+  height: 26px;
+
+  cursor: pointer;
+  z-index: 1;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+
+  width: 100%;
+  height: 2px;
+
+  background-color: white;
+
+  transition-duration: 0.25s;
+}
+.menu__btn > span::before {
+  content: "";
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: "";
+  top: 8px;
+}
+
+.menu__box {
+  display: block;
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  right: -100%; /* ✅ Changed from left: -100% */
+
+  width: 300px;
+  height: 100%;
+
+  margin: 0;
+  padding: 80px 0;
+
+  list-style: none;
+
+  background-color: #003870;
+  opacity: 0.9;
+  box-shadow: -1px 0px 6px rgba(0, 0, 0, 0.2); /* ✅ Updated direction of shadow */
+
+  transition-duration: 0.25s;
+}
+
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+
+  color: white;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition-duration: 0.25s;
+}
+.menu__item:hover {
+  background-color: #ffd200;
+}
+/* Hamburger Menu */
+
+header {
+  background-image: url("../assets/electrician_image_flipped.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 60%;
+  height: 100vh;
+  color: white;
+  padding: 2rem 5rem;
+}
+
+.logo-img {
+  height: 100px;
+  width: 100px;
+}
+
+.overlay {
+  border-image-source: linear-gradient(
+    hsl(50 100% 50% / 0.3),
+    hsl(211 100% 22% / 0.3)
+  );
+
+  border-image-slice: fill 1;
+}
+
+/* Navbar */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffd200;
+  text-decoration: underline;
+}
+
+/* Navbar */
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+}
+
+.hero {
+  margin-top: 5rem;
+}
+
+.hero h2,
+p {
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+p {
+  font-size: clamp(1rem, 4vw, 1.125rem);
+}
+
+.primary-cta {
+  background-color: #ffd200;
+  padding: 0.6rem 3rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin-top: 2rem;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+.primary-cta:hover {
+  background-color: #003870;
+  color: white;
+  cursor: pointer;
+  scale: 1.1;
+}
+
+/* Header */
+
+/* Main */
+
+main {
+  background-color: #f9f9f7;
+}
+.top-services-section h2 {
+  padding: 5rem 5rem;
+  color: #003870;
+}
+.projects-section h2 {
+  padding: 5rem 1rem;
+  color: #003870;
+}
+
+.services-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 0.5rem 5rem;
+}
+
+.service-card {
+  text-align: center;
+  background-color: white;
+  height: 50vh;
+  border-radius: 1rem;
+  color: #003870;
+  transition: 0.3s ease;
+}
+.service-card h3 {
+  padding-top: 1rem;
+}
+.service-card:hover {
+  background-color: #003870;
+  color: white;
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+.service-card img {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.projects-section {
+  padding: 0rem 5rem;
+  text-align: center;
+}
+
+/* .slideshow-container {
+  display: flex;
+} */
+/* Slideshow container */
+.slideshow-container {
+  max-width: 50vw;
+  position: relative;
+  margin: auto;
+}
+.slideshow-container img {
+  height: 80vh;
+  width: 50vw;
+}
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.prev {
+  left: 0px;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0px;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+/* Main */
+
+/* Footer */
+footer {
+  background-color: #003870;
+  padding: 2rem 5rem;
+}
+
+.social-icons {
+  height: auto;
+  width: 50px;
+}
+
+/* Footer */
+
+@media (max-width: 1023px) {
+  .logo-img {
+    height: 50px;
+    width: 50px;
+  }
+  header section {
+    margin-top: 30%;
+  }
+  .hero {
+    margin-top: 2rem;
+  }
+
+  .services-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .slideshow-container img {
+    height: 50vh;
+  }
+}
+@media (max-width: 767px) {
+  .top-nav ul li {
+    display: none;
+  }
+  nav {
+    margin-top: 2rem;
+  }
+  header {
+    padding: 1rem 2rem;
+  }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .footer-nav ul {
+    padding: 0;
+    margin: 0;
+  }
+  .footer-nav img {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 479px) {
+  .hero {
+    margin-top: 1rem;
+  }
+  header {
+    height: 100vh;
+  }
+  .services-section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .slideshow-container img {
+    height: 50vh;
+  }
+  nav ul li {
+    padding: 10px 5px;
+  }
+  .service-card {
+    height: 65vh;
+  }
+  .services-section {
+    gap: 3rem;
+  }
+  .slideshow-container img {
+    height: 40vh;
+  }
+}
